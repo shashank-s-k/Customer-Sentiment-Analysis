@@ -58,7 +58,7 @@ Optimize feature extraction with n-grams.
 
 ### Clone the repository:<br>
 
-git clone https://github.com/yourusername/mcdonalds-sentiment-analysis.git
+git clone 
 
 ### Navigate to the project directory:<br>
 
