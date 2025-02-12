@@ -56,19 +56,19 @@ Optimize feature extraction with n-grams.
 
 ## 📂 How to Run the Project
 
-### Clone the repository:<br>
+#### Clone the repository:<br>
 
-git clone 
+git clone https://github.com/shashank-s-k/Customer-Sentiment-Analysis
 
-### Navigate to the project directory:<br>
+#### Navigate to the project directory:<br>
 
 cd mcdonalds-sentiment-analysis
 
-### Install dependencies:<br>
+#### Install dependencies:<br>
 
 pip install -r requirements.txt
 
-### Run the sentiment analysis script:<br>
+#### Run the sentiment analysis script:<br>
 
 python sentiment_analysis.py
 
