@@ -1,3 +1,21 @@
+# Customer Sentiment Analysis (NLP)
+
+**Classifying customer reviews and surfacing *why* people are unhappy — at ~91% accuracy.**
+
+## Overview
+An NLP pipeline that classifies customer reviews as positive, negative or neutral, then
+goes a step further to extract the recurring themes behind each sentiment — the part that
+actually informs business action.
+
+## Key Results
+- **~91% accuracy** (Logistic Regression and Passive Aggressive classifiers)
+- Negative sentiment driven by **service, order errors and wait times**
+- Positive sentiment driven by food quality, cleanliness and friendly staff
+
+## Methods & Stack
+Text preprocessing · TF-IDF vectorisation · multi-model comparison & evaluation
+`Python` · `NLTK` · `scikit-learn` · `pandas`
+
 # McDonald's Customer Reviews Sentiment Analysis
 
 ## 📌 Project Overview
