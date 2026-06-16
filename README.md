@@ -1,84 +1,109 @@
-# McDonald's Customer Reviews Sentiment Analysis
+# 🍔 McDonald's Customer Reviews — Sentiment Analysis (NLP)
 
-## 📌 Project Overview
+An NLP pipeline that classifies customer reviews as **positive, negative or neutral** — and
+goes a step further to surface the recurring *themes* behind each sentiment, the part that
+actually tells a business what to fix.
 
-This project analyzes customer sentiment from McDonald's reviews using Natural Language Processing (NLP). The goal is to classify reviews into positive, negative, and neutral categories and gain insights into customer satisfaction.
+> **Business question:** *What are customers happy and unhappy about — and can we classify
+> and explain that sentiment automatically, at scale?*
 
-## 📊 Dataset
+<!-- TODO: export a chart (e.g. model-accuracy comparison or sentiment distribution) to
+     reports/figures/ and link it here: -->
+![Model accuracy comparison](reports/figures/01_model_comparison.png)
 
-The dataset contains McDonald's customer reviews.
+---
 
-Each review is labeled with a sentiment: positive, negative, or neutral.
+## 🔑 Key Results
 
-## 🔧 Technologies Used
+| Area | Insight |
+|---|---|
+| 🏆 Best models | **Logistic Regression** & **Passive Aggressive** — **~91–92% accuracy** |
+| 🧪 Models compared | Logistic Regression, Naïve Bayes, Passive Aggressive Classifier |
+| 👎 Negative drivers | **Service, order mistakes, waiting time** |
+| 👍 Positive drivers | Food quality, clean environment, friendly staff |
+| 📏 Evaluation | Accuracy, precision, recall and F1 — not accuracy alone |
 
-Python (for data processing & modeling)
+---
 
-Pandas & NumPy (for data manipulation)
+## 🗂️ Workflow
 
-NLTK & Scikit-learn (for text processing & ML models)
+| Stage | What it does |
+|---|---|
+| Data preprocessing | Tokenisation, stopword removal, **TF-IDF vectorisation** |
+| Sentiment classification | Train & compare three ML classifiers on the labelled reviews |
+| Model evaluation | Accuracy, precision, recall, F1 across classes |
+| Insights & visualisation | Most common words per sentiment; drivers of positive vs negative reviews |
 
-Matplotlib & Seaborn (for visualization)
+---
 
-## 🚀 Project Workflow
+## 📊 Visual Highlights
 
-Data Preprocessing
+<!-- Export these from the notebook into reports/figures/, then keep the lines below.
+     If you don't want images yet, delete this section. -->
 
-Tokenization, stopword removal, and vectorization (TF-IDF)
+**Sentiment distribution across the review set.**
 
-Sentiment Classification
+![Sentiment distribution](reports/figures/02_sentiment_distribution.png)
 
-Machine Learning models: Logistic Regression, Naïve Bayes, Passive Aggressive Classifier
+**Top terms driving negative sentiment — service and order accuracy dominate.**
 
-Model Evaluation
+![Negative sentiment terms](reports/figures/03_negative_terms.png)
 
-Accuracy, precision, recall, and F1-score metrics
+---
 
-Insights & Visualization
+## 🧰 Tech Stack
 
-Common words in each sentiment category
+`Python` · `pandas` · `numpy` · `NLTK` · `scikit-learn` · `Matplotlib` · `Seaborn`
 
-## 📈 Results
+---
 
-Best Performing Model: Logistic Regression & Passive Aggressive Classifier (~91-92% accuracy)
+## ▶️ How to Run
 
-Common Issues in Negative Reviews: Service, order mistakes, waiting time
+```bash
+# 1. Clone
+git clone https://github.com/shashank-s-k/Customer-Sentiment-Analysis.git
+cd Customer-Sentiment-Analysis
 
-Positive Aspects: Good food, clean environment, friendly staff
+# 2. (Recommended) create a virtual environment
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 
-## 🔍 Future Improvements
-
-Implement deep learning models for better accuracy.
-
-Perform aspect-based sentiment analysis.
-
-Optimize feature extraction with n-grams.
-
-## 📂 How to Run the Project
-
-#### Clone the repository:<br>
-
-git clone https://github.com/shashank-s-k/Customer-Sentiment-Analysis
-
-#### Navigate to the project directory:<br>
-
-cd mcdonalds-sentiment-analysis
-
-#### Install dependencies:<br>
-
+# 3. Install dependencies
 pip install -r requirements.txt
 
-#### Run the sentiment analysis script:<br>
+# 4. Run the analysis (notebook or script)
+jupyter lab            # open and run the notebook, OR:
+# python sentiment_analysis.py
+```
 
-python sentiment_analysis.py
+---
 
-## 🤝 Contributing
+## 📁 Repository Structure
 
-Feel free to fork this repository and contribute! Open an issue or submit a pull request.
+```
+Customer-Sentiment-Analysis/
+├── sentiment_analysis.ipynb   # preprocessing → TF-IDF → models → evaluation → insights
+├── data/                      # McDonald's reviews dataset
+├── reports/
+│   └── figures/               # exported PNG charts used in this README
+├── requirements.txt
+└── README.md
+```
+*Adjust filenames to match your repo.*
 
-## 📜 License
+---
 
-This project is licensed under the MIT License.
+## ⚖️ Methodology Notes (the honest bits)
 
-⭐ If you find this project helpful, please give it a star! ⭐
+- **TF-IDF + linear classifiers as strong, interpretable baselines:** fast to train and easy
+  to explain *why* a review was classified a certain way — valuable when the goal is insight,
+  not just a score.
+- **Accuracy isn't the whole story:** with uneven class sizes, per-class precision/recall and
+  F1 matter more than headline accuracy, so all are reported.
+- **Insight over score:** the project deliberately extracts the *drivers* of each sentiment
+  (service, wait times, food quality) rather than stopping at a classification metric.
 
+## 🔭 Future Improvements
+- Aspect-based sentiment analysis (rate *service* vs *food* vs *price* separately)
+- n-gram and embedding-based features
+- Deep-learning models (e.g. fine-tuned transformers) for a fair accuracy comparison
